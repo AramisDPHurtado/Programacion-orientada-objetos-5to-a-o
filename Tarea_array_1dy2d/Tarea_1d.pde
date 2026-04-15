@@ -12,11 +12,11 @@ void setup() {
 }
 
 void draw() {
-  background(255); // limpiar pantalla
+  background(255);
   float anchoBarra = width / cantidad;
   for (int i = 0; i < cantidad; i++) {
-    float x = i * anchoBarra; // posición en X
-    float h = barras[i];      // altura de la barra
+    float x = i * anchoBarra;
+    float h = barras[i];
     fill(100, 150, 255);
     rect(x, height - h, anchoBarra, h);
   }
