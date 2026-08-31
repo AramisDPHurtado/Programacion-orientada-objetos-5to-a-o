@@ -1,48 +1,35 @@
 class Pelota {
-  PVector acel=new PVector(0, 0);
+  PVector acel = new PVector(0, 0);
   PVector pos;
   PVector vel;
   float r = 15;
   color c = color(255);
-  
-  
- /* boolean ChocaConRect(PVector rpos,float rw, float rh){
-    if(pelota.pos.x < (rect.pos.x - w/2)) PMC.x = rect.pos.x - w/2;
-    else if (pelota..pos.x > (rect.pos.x + w/2)) PMC.x = rect.pos.x +w/2;
-    else PMC.x= pelota.pos.x;
-    return ChocaCon(PMC);
+
+  Pelota(float x, float y) {
+    pos = new PVector(x, y);
+    vel = new PVector(0, 0);
   }
-  boolean ChocaCon(PVector otro){
-    
+
+  void addFuerza(PVector f) {
+    acel.add(f);
   }
-  */
-/*  void alejar (PVector otro, float cuanto) {
-    PVector r = pos.copy();
-    r.sub(otro);
-    r.normalize();
-    r.mult(cuanto);
-    agregarFuerza(r);
-  }
-*/
-  Pelota() {
-    pos = new PVector (pos.x, pos.y);
-  }
+
   void rebotar() {
     if (pos.y > height - r || pos.y < r) {
       vel.y = vel.y * -1;
     }
-    if (pos.x > height - r || pos.x < r) {
+    if (pos.x > width - r || pos.x < r) {
       vel.x = vel.x * -1;
     }
   }
+
   void mover() {
-    pos.add(vel);
     vel.add(acel);
     vel.limit(30);
+    pos.add(vel);
     acel.mult(0);
     rebotar();
   }
-
 
   void mostrar() {
     fill(c);
